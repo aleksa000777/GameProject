@@ -1,0 +1,27 @@
+body {
+  background-color: lightblue;
+}
+.cellFormat
+{
+    background-color: Black;
+    color: Black;
+    font-size: 26pt;
+    width: 150px;
+    height: 150px;
+}
+
+img {
+  width: 150px;
+  height: 150px;
+}
+
+.back {
+  background-image: url("images/downSide.jpg");
+  background-repeat:no-repeat;
+  background-size:cover;
+
+}
+
+.active {
+
+}
