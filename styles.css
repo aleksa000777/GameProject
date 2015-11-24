@@ -58,7 +58,7 @@ img {
 .back {
   background-image: url("images/downSide.jpg");
   background-repeat:no-repeat;
-  background-size:cover;
+  background-size: cover;
 
 
 
@@ -72,4 +72,10 @@ img {
 input {
   width: 60px;
   height: 60px;
+}
+
+button {
+  width: 60px;
+  height:20px;
+  text-align: center;
 }

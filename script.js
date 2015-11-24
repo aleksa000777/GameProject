@@ -15,10 +15,10 @@
     var timeout = null;   //close with delay
     var numOfOpen = 0;
     var clickCount = 0;
-    var score = 0;
-    var x;
+    var score = 0;  //your score
+    var x;  //number of rows
     var imgArray = [];
-    var colvoPic;
+    var colvoPic; //how many pairs of pic on board
 
 
   // declare image array
@@ -45,13 +45,12 @@
   symbols[9].src = 'images/tiger.jpg';
 
 
-  // symbols = symbols.concat(symbols);
-
 
   Array.prototype.shuffle = function() {
     return this.sort(function () { return 0.5 - Math.random() });
   }
 
+   // change back color of cards
 
 $('input').click(function(){
   var back = $(this).attr('src');
@@ -61,7 +60,7 @@ $('input').click(function(){
 
 
 
-
+//choose mode and set cards
 
   $('button').click(function(){
     x = $(this).attr('value');
@@ -79,6 +78,8 @@ $('input').click(function(){
      openAll(numOfOpen);
 
   })
+
+//draw table
 
   function drawTable() {
        imgArray = imgArray.shuffle();
@@ -104,8 +105,6 @@ drawTable();
 
 
 function clickPicture(){
-
-
 
   $('td').on("click", function(e){
     e.preventDefault();
@@ -139,21 +138,20 @@ function clickPicture(){
             second = $(this).attr('id');
             secondSrc = $(this).children('img').attr('src');
 
-
             if (firstSrc == secondSrc) {
               var firstId = "#" + first;
               var secondId = "#" + second;
 
+              //set class clicked to open cards
               $(firstId).addClass('clicked');
               $(secondId).addClass('clicked');
 
-
-
-              console.log(first+"first match");
               numOfOpen++;
               openAll(numOfOpen);
               resetGamestate();
-            } else {
+            }
+            //if they dont match hide it
+            else {
               var blah = "#" + first;
               var scope = $(this);
               setTimeout(function(){
@@ -164,14 +162,14 @@ function clickPicture(){
               resetGamestate();
             }
 
-          }
+          }  // check sourse match closed
 
         }
 
         // Close else
       }
-  })
-}
+  })   //td on clich function
+}    //clickPicture function
 clickPicture();
 
 
@@ -183,12 +181,14 @@ clickPicture();
     var secondSrc = null;
   }
 
+  //if all card on board open reset board
   function openAll(numOfOpen) {
-  if(numOfOpen >=colvoPic){
-    alert('You win!');
-    $("table" ).remove();
-    $('#score').text('0');
-    init();
+    if(numOfOpen >=colvoPic){
+      alert('You win!');
+      $("table" ).remove();
+      $('#score').text('0');
+      init();
+    }
   }
-  }
+  
 }   //function init
