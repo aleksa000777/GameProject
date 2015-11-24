@@ -3,14 +3,26 @@
   <head>
     <meta charset="utf-8">
     <title>The Flip Memory Game</title>
+    <link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="script2.js" charset="utf-8"></script>
+    <!-- <script src="script2.js" charset="utf-8"></script> -->
+    <script src="script.js" charset="utf-8"></script>
+
   </head>
   <body>
     <header>
       <h1>Let's play!</h1>
     </header>
-    </p>
-    <a href='#' onclick='drawTable()'>Set Puzzle</a></body>
+    <div class="scoreShow">
+      <p>
+        Your current score:
+      </p>
+      <div id="score">0</div>
+    </div>
+    <button type="button" name="button" value="3">Easy</button>
+    <button type="button" name="button" value="4">Medium</button>
+    <button type="button" name="button" value="5">Hard</button>
+
+    <!-- <a href='#' onclick='drawTable()'>Set Puzzle</a></body> -->
 </html>

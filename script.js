@@ -2,18 +2,22 @@
     init();
   })
 
-  var first = null;
-  var firstSrc = null;
-  var second = null;
-  var secondSrc = null;
-  var found = false;
-  var timeout = null;   //close with delay
-  var numOfOpen = 0;
-  var clickCount = 0;
-  var score = 0;
+
 
 
   function init() {
+
+    var first = null;
+    var firstSrc = null;
+    var second = null;
+    var secondSrc = null;
+    var found = false;
+    var timeout = null;   //close with delay
+    var numOfOpen = 0;
+    var clickCount = 0;
+    var score = 0;
+    var x;
+
 
   // declare image array
   var symbols = new Array();
@@ -33,32 +37,13 @@
   symbols[6].src = 'images/forest.jpg';
   symbols[7] = new Image();
   symbols[7].src = 'images/paint.jpg';
-
-  symbols = symbols.concat(symbols);
-
-
-  // var symbols = [
-  //   one: {
-  //     image: 'images/forest.jpg',
-  //     used: false;
-  //   }
-  //   two: {
-  //     image: 'images/forest.jpg'
-  //   }
-  //
-  // ]
-  //
-  //
-  // if ( !symbols[randomNumber].used ) {
-  //   $('<img>').attr('src', symbols[randomNumber].src);
-  //   symbols[randomNumber].used === true
-  // }
+  symbols[8] = new Image();
+  symbols[8].src = 'images/snowcat.jpg';
+  symbols[9] = new Image();
+  symbols[9].src = 'images/tiger.jpg';
 
 
-  // 8 spaces
-  // 4 images
-  // sample 4
-
+  // symbols = symbols.concat(symbols);
 
 
   Array.prototype.shuffle = function() {
@@ -66,10 +51,27 @@
   }
 
 
+
+  console.log(symbols.length + "before drawTable");
+
+  $('button').click(function(){
+    x = $(this).attr('value');
+    var colvoPic = x*4/2;
+    symbols = symbols.slice(0, colvoPic);
+    symbols = symbols.concat(symbols);
+    symbols = symbols.shuffle();
+    $("table" ).remove();
+    $('#score').text('0');
+     drawTable();
+     clickPicture();
+
+  })
+
   function drawTable() {
        symbols = symbols.shuffle();
+       console.log(symbols);
       var rows = 4; //here's your number of rows and columns
-      var cols = 4;
+      var cols = x;
       var i = 0;
       var table = $('<table><tbody>');
       for(var r = 0; r < rows; r++){
@@ -94,7 +96,9 @@ function clickPicture(){
   console.log(clickCount);
 
 
+
   $('td').on("click", function(e){
+    e.preventDefault();
     console.log($(this).hasClass('clicked'));
     // if e.currentTarget has class of clicked, do not run anything
     if ( $(this).hasClass('clicked') ) {
@@ -105,6 +109,9 @@ function clickPicture(){
         if ( ( clickCount % 2 ) === 0 ){
           $(this).children('img').show();
           clickCount++;
+          score++;
+          $('#score').text(score);
+
           first = $(this).attr('id');
           firstSrc = $(this).children('img').attr('src');
           console.log('------');
@@ -118,8 +125,12 @@ function clickPicture(){
           }
           // Or check to see if image sources match
           else {
+
             $(this).children('img').show();
             clickCount++;
+            score++;
+            $('#score').text(score);
+
             second = $(this).attr('id');
             secondSrc = $(this).children('img').attr('src');
 
@@ -134,8 +145,8 @@ function clickPicture(){
               console.log('matches');
               $(firstId).addClass('clicked');
               $(secondId).addClass('clicked');
-              score++;
-              $('#score').text(score);
+
+
 
               console.log(first+"first match");
               numOfOpen++;
