@@ -53,6 +53,14 @@
   }
 
 
+$('input').click(function(){
+  var back = $(this).attr('src');
+  console.log(back);
+  $('.back').css("background-image", "url("+back+")");
+})
+
+
+
 
 
   $('button').click(function(){

@@ -41,7 +41,7 @@ td {
     background-color: Black;
     color: Black;
     width: 150px;
-    height: 150px;
+    height: 180px;
     padding: 0;
     margin: 0.1em 0.2em;
     border: solid 1px green;
@@ -60,8 +60,16 @@ img {
   background-repeat:no-repeat;
   background-size:cover;
 
+
+
 }
 
 .clicked {
     border: solid 1px white;
+}
+
+
+input {
+  width: 60px;
+  height: 60px;
 }
