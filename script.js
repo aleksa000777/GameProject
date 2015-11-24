@@ -17,6 +17,8 @@
     var clickCount = 0;
     var score = 0;
     var x;
+    var imgArray = [];
+    var colvoPic;
 
 
   // declare image array
@@ -52,24 +54,26 @@
 
 
 
-  console.log(symbols.length + "before drawTable");
 
   $('button').click(function(){
     x = $(this).attr('value');
-    var colvoPic = x*4/2;
-    symbols = symbols.slice(0, colvoPic);
-    symbols = symbols.concat(symbols);
-    symbols = symbols.shuffle();
+    colvoPic = x*4/2;
+    console.log(colvoPic + 'this is colvoPic');
+    imgArray = symbols.slice(0, colvoPic);
+    imgArray = imgArray.concat(imgArray);
+    imgArray = imgArray.shuffle();
     $("table" ).remove();
     $('#score').text('0');
+    numOfOpen = 0;
      drawTable();
      clickPicture();
+     console.log(numOfOpen + '    num of open');
+     openAll(numOfOpen);
 
   })
 
   function drawTable() {
-       symbols = symbols.shuffle();
-       console.log(symbols);
+       imgArray = imgArray.shuffle();
       var rows = 4; //here's your number of rows and columns
       var cols = x;
       var i = 0;
@@ -79,7 +83,7 @@
           for (var c = 0; c < cols; c++){
             $(tr).append($('<td>').attr('id', 'Cell'+r+c).addClass('cellFormat').addClass('back')
             .append($('<img>')
-            .attr('src', symbols[i].src).hide()));
+            .attr('src', imgArray[i].src).hide()));
             i++;
             tr.appendTo(table);
           }
@@ -92,17 +96,13 @@ drawTable();
 
 
 function clickPicture(){
-  console.log('click picture run');
-  console.log(clickCount);
 
 
 
   $('td').on("click", function(e){
     e.preventDefault();
-    console.log($(this).hasClass('clicked'));
     // if e.currentTarget has class of clicked, do not run anything
     if ( $(this).hasClass('clicked') ) {
-      console.log('already clicked');
     } else {
 
     // if Id of first equal
@@ -114,14 +114,11 @@ function clickPicture(){
 
           first = $(this).attr('id');
           firstSrc = $(this).children('img').attr('src');
-          console.log('------');
-          console.log(first);
-          console.log(firstSrc);
+
         } else if ( ( clickCount % 2 ) === 1 ){
 
           // If the Id is equal to the first do nothing
           if ( e.currentTarget.id == first) {
-            console.log('nothing should happen');
           }
           // Or check to see if image sources match
           else {
@@ -134,15 +131,11 @@ function clickPicture(){
             second = $(this).attr('id');
             secondSrc = $(this).children('img').attr('src');
 
-            console.log(firstSrc);
-            console.log(secondSrc);
 
             if (firstSrc == secondSrc) {
               var firstId = "#" + first;
               var secondId = "#" + second;
 
-              console.log(blah);
-              console.log('matches');
               $(firstId).addClass('clicked');
               $(secondId).addClass('clicked');
 
@@ -183,10 +176,11 @@ clickPicture();
   }
 
   function openAll(numOfOpen) {
-  if(numOfOpen >=8){
+  if(numOfOpen >=colvoPic){
     alert('You win!');
     $("table" ).remove();
-    drawTable();
+    $('#score').text('0');
+    init();
   }
   }
 }   //function init
