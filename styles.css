@@ -1,6 +1,7 @@
 body {
   background-color: lightblue;
   font-family: 'Indie Flower', cursive;
+  margin: 10px 30px;
 
 }
 
@@ -75,7 +76,32 @@ input {
 }
 
 button {
-  width: 60px;
-  height:20px;
+  width: 70px;
+  height:25px;
+  font-size: 15px;
+  border-radius: 20%;
+  text-align: top;
+  background: white;
+}
+
+.pony{
+  float: right;
+  margin-right: 10px;
+  height: 35px;
+  color:white;
+  background: rgb(202, 60, 60);
+  width: 150px;
+  border-radius: 30%;
+  font-size: 20px;
+}
+
+.advanced {
+  background-color: #00FFFF;
+}
+.advanced img{
+  margin: 0;
+  padding: 0px 10px;
+}
+.advanced h1{
   text-align: center;
 }

@@ -19,6 +19,8 @@
     var x;  //number of rows
     var imgArray = [];
     var colvoPic; //how many pairs of pic on board
+    var $pony; //pony gif
+    var h; //pony move speed left
 
 
   // declare image array
@@ -46,8 +48,53 @@
 
 
 
+
+
+
+  //ANVANCED mode
+  var advanced = new Array();
+  advanced[0] = new Image();
+  advanced[0].src = 'images/pony1.jpg';
+  advanced[1] = new Image();
+  advanced[1].src = 'images/pony2.jpg';
+  advanced[2] = new Image();
+  advanced[2].src = 'images/pony3.jpg';
+  advanced[3] = new Image();
+  advanced[3].src = 'images/pony4.jpg';
+  advanced[4] = new Image();
+  advanced[4].src = 'images/pony5.jpg';
+  advanced[5] = new Image();
+  advanced[5].src = 'images/pony6.jpg';
+  advanced[6] = new Image();
+  advanced[6].src = 'images/pony7.jpg';
+  advanced[7] = new Image();
+  advanced[7].src = 'images/pony8.jpg';
+
+  var pony = new Array();
+  pony[0] = new Image();
+  pony[0].src = 'images/gif/ponycrazy.gif';
+  pony[1] = new Image();
+  pony[1].src = 'images/gif/ponydance.gif';
+  pony[2] = new Image();
+  pony[2].src = 'images/gif/ponyfreeze.gif';
+  pony[3] = new Image();
+  pony[3].src = 'images/gif/ponylisun.gif';
+  pony[4] = new Image();
+  pony[4].src = 'images/gif/ponyplay.gif';
+
+
+
   Array.prototype.shuffle = function() {
     return this.sort(function () { return 0.5 - Math.random() });
+  }
+
+    //ponymove function
+  var ponyOffset = function() {
+  h -= 2;
+  $pony.offset({top: 30, left: h})
+    if (h<0) {
+      h = 700;
+    }
   }
 
    // change back color of cards
@@ -64,9 +111,37 @@ $('input').click(function(){
 
   $('button').click(function(){
     x = $(this).attr('value');
-    colvoPic = x*4/2;
+    //pony mode
+    if(x==='pony'){
+      score = 0;
+      imgArray = advanced.slice(0, 6);
+      x=3;
+      $('h1 > img').remove();
+      $('#pony > img').remove();
+      $('body').addClass('advanced');
+      $('h1').prepend('<img id="theImg" src="'+pony[0].src+'" />')
+      $('#theImg').append(pony[0]);
+      //second pony
+
+      $('#pony').append('<img id="ponyfly" src="'+pony[2].src+'" />')
+      $pony = $('#ponyfly');
+      h = 8;
+
+     var ponyTrot = setInterval(ponyOffset, 10)
+   }
+    //regular mode
+    else {
+      $('body').removeClass('advanced');
+      $('h1 > img').remove();
+      $('#pony > img').remove();
+      $('#ponyfly').remove();
+      colvoPic = x*4/2;
+      imgArray = symbols.slice(0, colvoPic);
+      score = 0;
+
+    }
     console.log(colvoPic + 'this is colvoPic');
-    imgArray = symbols.slice(0, colvoPic);
+
     imgArray = imgArray.concat(imgArray);
     imgArray = imgArray.shuffle();
     $("table" ).remove();
@@ -77,7 +152,7 @@ $('input').click(function(){
      console.log(numOfOpen + '    num of open');
      openAll(numOfOpen);
 
-  })
+  })   //click function ends
 
 //draw table
 
@@ -190,5 +265,5 @@ clickPicture();
       init();
     }
   }
-  
+
 }   //function init
