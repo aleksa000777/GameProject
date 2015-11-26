@@ -19,8 +19,7 @@
     var x;  //number of rows
     var imgArray = [];
     var colvoPic; //how many pairs of pic on board
-    var $pony; //pony gif
-    var h; //pony move speed left
+
 
 
   // declare image array
@@ -70,6 +69,7 @@
   advanced[7] = new Image();
   advanced[7].src = 'images/pony8.jpg';
 
+
   var pony = new Array();
   pony[0] = new Image();
   pony[0].src = 'images/gif/ponycrazy.gif';
@@ -81,6 +81,8 @@
   pony[3].src = 'images/gif/ponylisun.gif';
   pony[4] = new Image();
   pony[4].src = 'images/gif/ponyplay.gif';
+  pony[5] = new Image();
+  pony[5].src = 'images/gif/ponyfly2.gif';
 
 
 
@@ -88,14 +90,7 @@
     return this.sort(function () { return 0.5 - Math.random() });
   }
 
-    //ponymove function
-  var ponyOffset = function() {
-  h -= 2;
-  $pony.offset({top: 30, left: h})
-    if (h<0) {
-      h = 700;
-    }
-  }
+
 
    // change back color of cards
 
@@ -115,26 +110,28 @@ $('input').click(function(){
     if(x==='pony'){
       score = 0;
       imgArray = advanced.slice(0, 6);
+      colvoPic = 6;
       x=3;
-      $('h1 > img').remove();
       $('#pony > img').remove();
       $('body').addClass('advanced');
-      $('h1').prepend('<img id="theImg" src="'+pony[0].src+'" />')
-      $('#theImg').append(pony[0]);
-      //second pony
 
       $('#pony').append('<img id="ponyfly" src="'+pony[2].src+'" />')
-      $pony = $('#ponyfly');
-      h = 8;
+      $('#pony').append('<img id="ponyplay" src="'+pony[4].src+'" />')
+      $('#pony').append('<img id="ponyfly2" src="'+pony[5].src+'" />')
 
-     var ponyTrot = setInterval(ponyOffset, 10)
-   }
+      //  add class ponyback
+      $('td').removeClass('ponyback');
+      $('td').addClass('ponyback');
+
+
+
+
+   } //if ponu mode ends
     //regular mode
     else {
       $('body').removeClass('advanced');
-      $('h1 > img').remove();
+      $('td').removeClass('ponyback');
       $('#pony > img').remove();
-      $('#ponyfly').remove();
       colvoPic = x*4/2;
       imgArray = symbols.slice(0, colvoPic);
       score = 0;
@@ -170,9 +167,16 @@ $('input').click(function(){
             .attr('src', imgArray[i].src).hide()));
             i++;
             tr.appendTo(table);
+            if($('body').hasClass('advanced')){
+              $('tr').removeClass('back')
+              $('tr').addClass('ponyback')
+            }
+            else {
+              $('tr').removeClass('ponyback')
+            }
           }
       }
-      table.appendTo('body');
+      table.appendTo('#table');
 
   }
 drawTable();

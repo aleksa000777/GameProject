@@ -49,7 +49,6 @@ td {
 }
 
 img {
-
   width:150px;
   height:100%;
   margin: 0;
@@ -96,12 +95,45 @@ button {
 }
 
 .advanced {
-  background-color: #00FFFF;
+  /*background-color: #00FFFF;*/
+  background-image: url("images/backyellow.jpg");
+  background-repeat:no-repeat;
+  background-size: cover;
+
+
 }
 .advanced img{
   margin: 0;
-  padding: 0px 10px;
+  padding: 0;
 }
 .advanced h1{
   text-align: center;
+}
+
+#ponyfly{
+  position: absolute;
+  top: 400px;
+  left: 10%;
+  height: 250px;
+}
+
+#ponyplay{
+  position: absolute;
+  top: 60px;
+  left: 45%;
+  height: 160px;
+}
+
+#ponyfly2{
+  position: absolute;
+  top: 400px;
+  right: 10%;
+  height: 160px;
+}
+
+
+.ponyback{
+  background-image: url("images/backpony.jpg");
+  background-repeat:no-repeat;
+  background-size: cover;
 }
