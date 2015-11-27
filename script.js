@@ -3,8 +3,6 @@
   })
 
 
-
-
   function init() {
 
     var first = null;
@@ -114,6 +112,7 @@ $('input').click(function(){
       x=3;
       $('#pony > img').remove();
       $('body').addClass('advanced');
+      $('input').hide();
 
       $('#pony').append('<img id="ponyfly" src="'+pony[2].src+'" />')
       $('#pony').append('<img id="ponyplay" src="'+pony[4].src+'" />')
@@ -130,6 +129,7 @@ $('input').click(function(){
     //regular mode
     else {
       $('body').removeClass('advanced');
+      $('input').show();
       $('td').removeClass('ponyback');
       $('#pony > img').remove();
       colvoPic = x*4/2;
@@ -167,18 +167,21 @@ $('input').click(function(){
             .attr('src', imgArray[i].src).hide()));
             i++;
             tr.appendTo(table);
-            if($('body').hasClass('advanced')){
-              $('tr').removeClass('back')
-              $('tr').addClass('ponyback')
-            }
-            else {
-              $('tr').removeClass('ponyback')
-            }
           }
       }
       table.appendTo('#table');
 
-  }
+      //add ponyback class
+      if($('body').hasClass('advanced')){
+        $('td').removeClass('back')
+        $('td').addClass('ponyback')
+      }
+      else {
+        $('td').removeClass('ponyback')
+        $('td').addClass('back')
+      }
+
+  }   //function drawTable ends
 drawTable();
 
 
@@ -237,7 +240,6 @@ function clickPicture(){
                 var one = $(blah).children('img').hide();
                 var two = scope.children('img').hide();
               }, 1000);
-
               resetGamestate();
             }
 
@@ -247,7 +249,7 @@ function clickPicture(){
 
         // Close else
       }
-  })   //td on clich function
+  })   //td on click function
 }    //clickPicture function
 clickPicture();
 

@@ -92,6 +92,7 @@ button {
   width: 150px;
   border-radius: 30%;
   font-size: 20px;
+  border-color: white;
 }
 
 .advanced {
@@ -112,23 +113,23 @@ button {
 
 #ponyfly{
   position: absolute;
-  top: 400px;
+  top: 340px;
   left: 10%;
   height: 250px;
 }
 
 #ponyplay{
   position: absolute;
-  top: 60px;
+  top: 50px;
   left: 45%;
-  height: 160px;
+  height: 130px;
 }
 
 #ponyfly2{
   position: absolute;
-  top: 400px;
+  top: 370px;
   right: 10%;
-  height: 160px;
+  height: 165px;
 }
 
 
