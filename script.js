@@ -48,7 +48,7 @@
 
 
 
-  //ANVANCED mode
+  //ANVANCED mode images
   var advanced = new Array();
   advanced[0] = new Image();
   advanced[0].src = 'images/pony1.jpg';
@@ -67,21 +67,14 @@
   advanced[7] = new Image();
   advanced[7].src = 'images/pony8.jpg';
 
-
+//pony gif images
   var pony = new Array();
   pony[0] = new Image();
-  pony[0].src = 'images/gif/ponycrazy.gif';
+  pony[0].src = 'images/gif/ponyfreeze.gif';
   pony[1] = new Image();
-  pony[1].src = 'images/gif/ponydance.gif';
+  pony[1].src = 'images/gif/ponyplay.gif';
   pony[2] = new Image();
-  pony[2].src = 'images/gif/ponyfreeze.gif';
-  pony[3] = new Image();
-  pony[3].src = 'images/gif/ponylisun.gif';
-  pony[4] = new Image();
-  pony[4].src = 'images/gif/ponyplay.gif';
-  pony[5] = new Image();
-  pony[5].src = 'images/gif/ponyfly2.gif';
-
+  pony[2].src = 'images/gif/ponyfly2.gif';
 
 
   Array.prototype.shuffle = function() {
@@ -89,15 +82,13 @@
   }
 
 
-
    // change back color of cards
 
-$('input').click(function(){
-  var back = $(this).attr('src');
-  console.log(back);
-  $('.back').css("background-image", "url("+back+")");
-})
-
+  $('input').click(function(){
+    var back = $(this).attr('src');
+    console.log(back);
+    $('.back').css("background-image", "url("+back+")");
+  })
 
 
 //choose mode and set cards
@@ -114,18 +105,16 @@ $('input').click(function(){
       $('body').addClass('advanced');
       $('input').hide();
 
-      $('#pony').append('<img id="ponyfly" src="'+pony[2].src+'" />')
-      $('#pony').append('<img id="ponyplay" src="'+pony[4].src+'" />')
-      $('#pony').append('<img id="ponyfly2" src="'+pony[5].src+'" />')
+      $('#pony').append('<img id="ponyfly" src="'+pony[0].src+'" />')
+      $('#pony').append('<img id="ponyplay" src="'+pony[1].src+'" />')
+      $('#pony').append('<img id="ponyfly2" src="'+pony[2].src+'" />')
 
       //  add class ponyback
       $('td').removeClass('ponyback');
       $('td').addClass('ponyback');
 
-
-
-
    } //if ponu mode ends
+
     //regular mode
     else {
       $('body').removeClass('advanced');
@@ -262,7 +251,7 @@ clickPicture();
     var secondSrc = null;
   }
 
-  //if all card on board open reset board
+  //if all cards on board open reset board
   function openAll(numOfOpen) {
     if(numOfOpen >=colvoPic){
       alert('You win!');
