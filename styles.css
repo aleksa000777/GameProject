@@ -85,7 +85,7 @@ button {
 
 .pony{
   float: right;
-  margin-right: 10px;
+  margin-right: 5%;
   height: 35px;
   color:white;
   background: rgb(202, 60, 60);
@@ -95,11 +95,13 @@ button {
   border-color: white;
 }
 
-.advanced {
+body.advanced {
   /*background-color: #00FFFF;*/
   background-image: url("images/backyellow.jpg");
-  background-repeat:no-repeat;
+  background-repeat: repeat;
   background-size: cover;
+  width: 100%;
+  height: 100%;
 
 
 }
@@ -110,6 +112,10 @@ button {
 .advanced h1{
   text-align: center;
 }
+.advanced button.pony{
+  margin-right: 10%;
+}
+
 
 #ponyfly{
   position: absolute;
@@ -138,3 +144,72 @@ button {
   background-repeat:no-repeat;
   background-size: cover;
 }
+
+
+
+/*responsitive*/
+@media screen and (min-width: 801px) {
+
+}
+@media screen
+and (min-width: 401px)
+and (max-width: 800px) {
+  #ponyfly{
+    display: none;
+  }
+  #ponyfly2{
+    display: none;
+  }
+  #ponyplay{
+    display: none;
+    }
+
+  .cellFormat
+  {
+      background-color: Black;
+      color: Black;
+      width: 100px;
+      height: 120px;
+      padding: 0;
+      border: solid 1px green;
+  }
+}
+
+
+@media screen and (max-width: 400px) {
+  body {
+    font-size: 0.7em;
+    margin: 0;
+  }
+  button {
+    width: 70px;
+    height: 25px;
+  }
+  button.pony{
+    width: 75px;
+    height: 25px;
+    font-size: 1em;
+  }
+  #ponyfly{
+    display: none;
+  }
+  #ponyfly2{
+    display: none;
+  }
+  #ponyplay{
+    display: none;
+    }
+
+  .cellFormat
+  {
+      background-color: Black;
+      color: Black;
+      width: 100px;
+      height: 120px;
+      padding: 0;
+      border: solid 1px green;
+  }
+}
+
+
+@media screen and (min-width: 801px) {
