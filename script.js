@@ -174,7 +174,7 @@
 drawTable();
 
 
-
+var open = true;
 function clickPicture(){
 
   $('td').on("click", function(e){
@@ -184,14 +184,17 @@ function clickPicture(){
     } else {
 
     // if Id of first equal
-        if ( ( clickCount % 2 ) === 0 ){
-          $(this).children('img').show();
-          clickCount++;
-          score++;
-          $('#score').text(score);
 
-          first = $(this).attr('id');
-          firstSrc = $(this).children('img').attr('src');
+        if ( ( clickCount % 2 ) === 0 ){
+          if(open){
+            $(this).children('img').show();
+            clickCount++;
+            score++;
+            $('#score').text(score);
+
+            first = $(this).attr('id');
+            firstSrc = $(this).children('img').attr('src');
+        }
 
         } else if ( ( clickCount % 2 ) === 1 ){
 
@@ -200,15 +203,15 @@ function clickPicture(){
           }
           // Or check to see if image sources match
           else {
+            if(open){
+              $(this).children('img').show();
+              clickCount++;
+              score++;
+              $('#score').text(score);
 
-            $(this).children('img').show();
-            clickCount++;
-            score++;
-            $('#score').text(score);
-
-            second = $(this).attr('id');
-            secondSrc = $(this).children('img').attr('src');
-
+              second = $(this).attr('id');
+              secondSrc = $(this).children('img').attr('src');
+            }
             if (firstSrc == secondSrc) {
               var firstId = "#" + first;
               var secondId = "#" + second;
@@ -221,14 +224,18 @@ function clickPicture(){
               openAll(numOfOpen);
               resetGamestate();
             }
+
             //if they dont match hide it
             else {
+              open = false;
               var blah = "#" + first;
               var scope = $(this);
               setTimeout(function(){
                 var one = $(blah).children('img').hide();
                 var two = scope.children('img').hide();
+                open = true;
               }, 1000);
+
               resetGamestate();
             }
 
